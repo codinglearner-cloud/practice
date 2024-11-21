@@ -60,23 +60,26 @@ pages.run()
 
 import streamlit as st
 
-# 페이지 상태를 세션에 저장
-if 'page' not in st.session_state:
-    st.session_state.page = 'page1'
+st.title('Streamlit 앱의 테마 사용자 정의하기')
 
-# 페이지 이동 버튼 정의
-def navigate_to_page(page_name):
-    st.session_state.page = page_name
+st.write('이 앱의 `.streamlit/config.toml` 파일 내용')
 
-# 현재 페이지에 따라 다른 내용 표시
-if st.session_state.page == 'page1':
-    st.title("페이지 1")
-    st.write("여기는 페이지 1입니다.")
-    if st.button("페이지 2로 이동"):
-        navigate_to_page('page2')
+st.code("""
+[theme]
+primaryColor="#F39C12"
+backgroundColor="#2E86C1"
+secondaryBackgroundColor="#AED6F1"
+textColor="#FFFFFF"
+font="monospace"
+""")
 
-elif st.session_state.page == 'page2':
-    st.title("페이지 2")
-    st.write("여기는 페이지 2입니다.")
-    if st.button("페이지 1로 이동"):
-        navigate_to_page('page1')
+number = st.sidebar.slider('숫자를 선택하세요:', 0, 10, 5)
+st.write('슬라이더 위젯에서 선택된 숫자:', number)
+
+
+[theme]
+primaryColor="#F39C12"
+backgroundColor="#2E86C1"
+secondaryBackgroundColor="#AED6F1"
+textColor="#FFFFFF"
+font="monospace"
